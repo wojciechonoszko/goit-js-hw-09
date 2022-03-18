@@ -20,10 +20,9 @@ const options = {
       
       const currentDate = new Date();
       const currentDateNum = currentDate.getTime();
-      console.log(typeof currentDateNum);
       
       const selectedDatesNum = selectedDates[0].getTime();
-      console.log(selectedDatesNum)
+      
 
       if (selectedDatesNum < currentDateNum) {
         startButton.disabled = true;
@@ -40,15 +39,15 @@ const options = {
         timerId = setInterval(() => {
           function convertMs(ms) {
           // Number of milliseconds per unit of time
-          console.log(currentDateNum);
-          console.log(selectedDatesNum - new Date().getTime());
+          //console.log(currentDateNum);
+          //console.log(selectedDatesNum - new Date().getTime());
           ms = selectedDatesNum - new Date().getTime();
-          
+          while (ms >= 0) {
           const second = 1000;
           const minute = second * 60;
           const hour = minute * 60;
           const day = hour * 24;
-          ms = ms - second;
+         
           // Remaining days
           const days = Math.floor(ms / day);
           // Remaining hours
@@ -61,19 +60,22 @@ const options = {
           dataHours.textContent = hours.toString();
           dataMinutes.textContent = minutes.toString();
           dataSeconds.textContent = seconds.toString();
-          console.log(days.toString());
+          
           
         
           return { days, hours, minutes, seconds };
+        }
+        
+        
         };
         
       
         const timeElapse = selectedDatesNum - currentDateNum;
         
 
-        console.log(timeElapse);
+        //console.log(timeElapse);
         
-        console.log(convertMs(timeElapse)); // {days: 0, hours: 0, minutes: 0, seconds: 2}
+        convertMs(timeElapse); // {days: 0, hours: 0, minutes: 0, seconds: 2}
         
         }, 1000)
       
