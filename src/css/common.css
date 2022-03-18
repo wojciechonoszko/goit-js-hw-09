@@ -16,3 +16,26 @@ img {
   display: block;
   max-width: 100%;
 }
+.timer{
+  display: flex;
+  flex-direction: row;
+
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin:10px;
+}
+.value {
+  font-family: "Courier New";
+  font-weight: bold;
+  font-size: 50px;
+  color: rgb(92, 24, 24);
+  background-color: rgb(224, 224, 91);
+  border-radius: 5px;
+  border: 2px solid rgb(73, 70, 70);
+
+
+
+}

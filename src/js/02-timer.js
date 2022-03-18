@@ -1,6 +1,8 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 
+import Notiflix from 'notiflix';
+
 const startButton = document.querySelector('[data-start]');
 let timerId = null;
 
@@ -26,7 +28,8 @@ const options = {
 
       if (selectedDatesNum < currentDateNum) {
         startButton.disabled = true;
-        window.alert("Please choose a date in the future");
+        //window.alert("Please choose a date in the future");
+        Notiflix.Notify.failure('Please choose a date in the future');
       }
       else {
         startButton.disabled = false;
@@ -76,6 +79,15 @@ const options = {
         //console.log(timeElapse);
         
         convertMs(timeElapse); // {days: 0, hours: 0, minutes: 0, seconds: 2}
+        
+        function addLeadingZero(value) {
+         dataDays.textContent = dataDays.textContent.padStart(value, '0');
+         dataHours.textContent = dataHours.textContent.padStart(value, '0');
+         dataMinutes.textContent = dataMinutes.textContent.padStart(value, '0');
+         dataSeconds.textContent = dataSeconds.textContent.padStart(value, '0');
+        
+        }
+        addLeadingZero(2);
         
         }, 1000)
       
