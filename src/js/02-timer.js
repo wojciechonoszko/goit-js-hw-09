@@ -4,6 +4,11 @@ import 'flatpickr/dist/flatpickr.min.css';
 const startButton = document.querySelector('[data-start]');
 let timerId = null;
 
+const dataDays = document.querySelector('[data-days]');
+const dataHours = document.querySelector('[data-hours');
+const dataMinutes = document.querySelector('[data-minutes]');
+const dataSeconds = document.querySelector('[data-seconds]');
+
 startButton.disabled = true;
 
 const options = {
@@ -27,18 +32,23 @@ const options = {
       else {
         startButton.disabled = false;
       } 
+      
 
 
       startButton.addEventListener("click", () => {
-        document.querySelector('[data-days]').textContent = "23";
+        
         timerId = setInterval(() => {
           function convertMs(ms) {
           // Number of milliseconds per unit of time
+          console.log(currentDateNum);
+          console.log(selectedDatesNum - new Date().getTime());
+          ms = selectedDatesNum - new Date().getTime();
+          
           const second = 1000;
           const minute = second * 60;
           const hour = minute * 60;
           const day = hour * 24;
-        
+          ms = ms - second;
           // Remaining days
           const days = Math.floor(ms / day);
           // Remaining hours
@@ -47,12 +57,24 @@ const options = {
           const minutes = Math.floor(((ms % day) % hour) / minute);
           // Remaining seconds
           const seconds = Math.floor((((ms % day) % hour) % minute) / second);
+          dataDays.textContent = days.toString();
+          dataHours.textContent = hours.toString();
+          dataMinutes.textContent = minutes.toString();
+          dataSeconds.textContent = seconds.toString();
+          console.log(days.toString());
+          
         
           return { days, hours, minutes, seconds };
         };
-        console.log(convertMs(selectedDatesNum)); // {days: 0, hours: 0, minutes: 0, seconds: 2}
-        console.log(convertMs(140000)); // {days: 0, hours: 0, minutes: 2, seconds: 20}
-        console.log(convertMs(24140000)); // {days: 0, hours: 6 minutes: 42, seconds: 20}
+        
+      
+        const timeElapse = selectedDatesNum - currentDateNum;
+        
+
+        console.log(timeElapse);
+        
+        console.log(convertMs(timeElapse)); // {days: 0, hours: 0, minutes: 0, seconds: 2}
+        
         }, 1000)
       
       } )
