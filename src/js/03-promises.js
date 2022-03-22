@@ -18,7 +18,7 @@ function prevent(evt){
     //console.log(delay);
     let delayStep = parseInt(document.querySelector('[name = "step"]').value, 10);
 
-    setTimeout(() => {
+    //setTimeout(() => {
     for (let position = 0; position < amount; position++){ 
     
     const promise = new Promise((resolve, reject) => {
@@ -57,7 +57,7 @@ function prevent(evt){
       });
     }
     
-    }, delay)
+    //}, 0)
   
 };
 
