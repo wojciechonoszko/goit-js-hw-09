@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "flat": "^5.0.2",
+    "flatpickr": "^4.6.11",
     "not": "^0.1.0",
     "notiflix": "^3.2.5"
   }
